@@ -1,0 +1,23 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] pr = new int[n];
+
+        pr[0] = 1;
+
+        // Calculate prefix products for elements other than the first one
+        for (int i = 1; i < n; i++) {
+            pr[i] = pr[i - 1] * nums[i - 1];
+        }
+
+        int suffix = 1;
+        
+        // Calculate the final product array using prefix and suffix products
+        for (int i = n - 1; i >= 0; i--) {
+            pr[i] *= suffix;
+            suffix *= nums[i];
+        }
+
+        return pr;
+    }
+}
