@@ -1,0 +1,11 @@
+class Solution {
+    public int xorOperation(int n, int start) {
+
+// insted of creating an array we can simply take xor of elments which are going to be in array.. with O(1) time and space complexity.
+        int ans = start;
+        for(int i = 1;i<n;i++){
+            ans ^= start + (2*i);
+        }
+        return ans;
+    }
+}
